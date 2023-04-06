@@ -1,0 +1,112 @@
+import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {View, Text, StyleSheet, Image} from 'react-native';
+
+const Dashboard = () => {
+  const user = {
+    name: "John Doe",
+    profilePicture: "https://via.placeholder.com/100",
+    interests: "Science, Technology, Engineering",
+    skills: "Critical thinking, Problem-solving",
+  };
+
+  return (
+    <View style={styles.container}>
+      <Image
+        style={styles.logo}
+        source={{uri: 'https://via.placeholder.com/200x200'}}
+      />
+      <Text style={styles.heading}>Dashboard</Text>
+      <Text style={styles.slogan}>Your future looks bright!</Text>
+      <View style={styles.profile}>
+        <Image
+          style={styles.profilePicture}
+          source={{uri: user.profilePicture}}
+        />
+        <Text style={styles.profileName}>{user.name}</Text>
+        <Text style={styles.profileInfo}>Interests: {user.interests}</Text>
+        <Text style={styles.profileInfo}>Skills: {user.skills}</Text>
+      </View>
+    </View>
+  );
+};
+
+
+
+
+
+const FieldExploration = () => {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.heading}>Field Exploration</Text>
+    </View>
+  );
+};
+
+const Community = () => {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.heading}>Community</Text>
+    </View>
+  );
+};
+
+const Tab = createBottomTabNavigator();
+
+const App = () => {
+  return (
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="Dashboard" component={Dashboard} />
+        <Tab.Screen name="Field Exploration" component={FieldExploration} />
+        <Tab.Screen name="Community" component={Community} />
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  heading: {
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+  profile: {
+    marginTop: 20,
+    alignItems: 'center',
+  },
+  profilePicture: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+  },
+  profileName: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginTop: 10,
+  },
+  profileInfo: {
+    fontSize: 14,
+    marginTop: 5,
+  },
+  slogan: {
+    fontSize: 18,
+    fontStyle: 'italic',
+    marginTop: 5,
+    marginBottom: 20,
+  },
+  logo: {
+    width: 200,
+    height: 200,
+    resizeMode: 'contain',
+    marginBottom: 20,
+  },
+});
+
+
+export default App;
