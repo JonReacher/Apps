@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 
 const Dashboard = () => {
   const user = {
@@ -9,6 +9,26 @@ const Dashboard = () => {
     profilePicture: "https://via.placeholder.com/100",
     interests: "Science, Technology, Engineering",
     skills: "Critical thinking, Problem-solving",
+  };
+
+  const recommendedFields = [
+    {title: 'Computer Science', action: () => {}},
+    {title: 'Biotechnology', action: () => {}},
+    {title: 'Environmental Science', action: () => {}},
+  ];
+
+  const quickAccessButtons = [
+    {title: 'Assessments', action: () => {}},
+    {title: 'Goals', action: () => {}},
+    {title: 'My Fields', action: () => {}},
+  ];
+
+  const QuickAccess = ({title, action}) => {
+    return (
+      <TouchableOpacity style={styles.quickAccessButton} onPress={action}>
+        <Text style={styles.quickAccessButtonText}>{title}</Text>
+      </TouchableOpacity>
+    );
   };
 
   return (
@@ -28,12 +48,21 @@ const Dashboard = () => {
         <Text style={styles.profileInfo}>Interests: {user.interests}</Text>
         <Text style={styles.profileInfo}>Skills: {user.skills}</Text>
       </View>
+      <View style={styles.recommendedFields}>
+        <Text style={styles.sectionTitle}>Recommended Fields</Text>
+        {recommendedFields.map((field, index) => (
+          <QuickAccess key={index} title={field.title} action={field.action} />
+        ))}
+      </View>
+      <View style={styles.quickAccess}>
+        <Text style={styles.sectionTitle}>Quick Access</Text>
+        {quickAccessButtons.map((button, index) => (
+          <QuickAccess key={index} title={button.title} action={button.action} />
+        ))}
+      </View>
     </View>
   );
 };
-
-
-
 
 
 const FieldExploration = () => {
@@ -105,6 +134,33 @@ const styles = StyleSheet.create({
     height: 200,
     resizeMode: 'contain',
     marginBottom: 20,
+  },
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginTop: 20,
+    marginBottom: 10,
+  },
+  quickAccessButton: {
+    backgroundColor: '#3f51b5',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    marginBottom: 10,
+  },
+  quickAccessButtonText: {
+    color: '#fff',
+    fontSize: 16,
+  },
+  recommendedFields: {
+    marginTop: 20,
+    alignItems: 'center',
+    width: '80%',
+  },
+  quickAccess: {
+    marginTop: 20,
+    alignItems: 'center',
+    width: '80%',
   },
 });
 
