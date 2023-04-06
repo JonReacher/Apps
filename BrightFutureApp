@@ -2,6 +2,26 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import firebase from "firebase";
+
+// Your Firebase configuration object
+const firebaseConfig = {
+  apiKey: "AIzaSyBXsDg39qSivf0FwGwcPejjDXoY8Z_Yp74",
+  authDomain: "brightfuture-a7247.firebaseapp.com",
+  projectId: "brightfuture-a7247",
+  storageBucket: "brightfuture-a7247.appspot.com",
+  messagingSenderId: "364124977462",
+  appId: "1:364124977462:web:886bb955090e5e44719b97",
+  measurementId: "G-0Z4GFMJSN6"
+};
+
+// Initialize Firebase
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+} else {
+  firebase.app();
+}
+
 
 const Dashboard = () => {
   const user = {
