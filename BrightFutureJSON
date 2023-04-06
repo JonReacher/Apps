@@ -10,6 +10,10 @@
     "react-native-screens": "~3.18.0",
     "react-native-safe-area-context": "4.4.1",
     "react-native-progress": "^4.1.2",
-    "firebase": "8.2.0"
+    "firebase": "8.2.6",
+    "firebase/firestore": "*",
+    "firebase/app": "*",
+    "expo-google-app-auth": "~8.3.0",
+    "expo-app-auth": "~11.1.0"
   }
 }
